@@ -1,0 +1,19 @@
+---
+image: qwe1/debian9-ansible-molecule:latest
+
+stages:
+  - test
+
+molecule:
+  stage: test
+  tags:
+    - docker
+  script:
+    - python -V
+    - cat /etc/os-release
+    - ansible --version
+    - molecule --version
+    - molecule lint || true
+    - ansible-lint defaults/* || true
+    - ansible-lint tasks/* || true
+    - ansible-lint vars/* || true

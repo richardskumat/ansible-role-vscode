@@ -1,0 +1,12 @@
+---
+# tasks file for vscode
+
+#- name: Include overrides specific to EL 7.
+#  include_vars: "{{ ansible_os_family }}.yml"
+#  when:
+#    - ansible_os_family == 'RedHat'
+
+- name: Include debian OS family tasks
+  include_tasks: "{{ ansible_os_family }}.yml"
+  when:
+    - ansible_os_family == 'Debian'

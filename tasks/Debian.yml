@@ -1,0 +1,44 @@
+---
+
+- name: Ensure gpg and apt-transport-https is present on the system
+  apt:
+   name:
+     - gnupg
+     - apt-transport-https
+   state: present
+   update_cache: yes
+
+- name: Add an Apt signing key, uses whichever key is at the URL
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+
+- name: Add microsoft apt repo for vscode
+  apt_repository:
+    repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+    state: present
+    filename: vscode
+
+- name: Add apt-transport-https from apt
+  apt:
+    name: apt-transport-https
+    state: present
+
+- name: Add vscode and update cache
+  apt:
+    name: code
+    #code-insiders for beta?
+    state: present
+
+- name: Remove gnome-keyring
+# makes chromium way too annoying to use
+  apt:
+    name: "{{ packages }}"
+    state: absent
+    autoremove: yes
+  vars:
+   packages:
+   - gnome-keyring
+
+
+
