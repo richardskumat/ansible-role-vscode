@@ -7,30 +7,11 @@ lint:
   name: yamllint
 platforms:
 
-  - name: debian_9
+  - name: instance
     image: debian:9
     pull: yes
     groups:
      - vscode
-
-  - name: debian_8
-    image: debian:8
-    pull: yes
-    groups:
-     - vscode
-
-  - name: ubuntu_1804
-    image: ubuntu:18.04
-    pull: yes
-    groups:
-     - vscode
-
-  - name: ubuntu_1604
-    image: ubuntu:16.04
-    pull: yes
-    groups:
-     - vscode
-
 
 provisioner:
   name: ansible
