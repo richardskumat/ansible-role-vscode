@@ -1,19 +1,37 @@
 ---
-image: qwe1/debian9-ansible-molecule:latest
+# use my own docker:stable image that has
+# ansible and molecule added
+image: qwe1/dind-ansible-molecule:latest
+
+variables:
+  DOCKER_HOST: tcp://docker:2375/
+  DOCKER_DRIVER: overlay2
+  # https://gitlab.com/gitlab-org/gitlab-ce/issues/64959
+  # 19.03 had some breaking changes compared to 18.09
+  DOCKER_TLS_CERTDIR: ""
+
+
+services:
+  - docker:dind
 
 stages:
   - test
 
-molecule:
+before_script:
+  - docker info
+
+test_d9:
   stage: test
-  tags:
-    - docker
+  variables:
+    MOLECULE_DISTRO: "debian:9"
   script:
-    - python -V
-    - cat /etc/os-release
-    - ansible --version
-    - molecule --version
-    - molecule lint || true
-    - ansible-lint defaults/* || true
-    - ansible-lint tasks/* || true
-    - ansible-lint vars/* || true
+    - molecule converge || true
+    - molecule test || true
+
+test_d10:
+  stage: test
+  variables:
+    MOLECULE_DISTRO: "debian:10"
+  script:
+    - molecule converge || true
+    - molecule test || true

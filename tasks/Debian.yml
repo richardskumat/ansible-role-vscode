@@ -19,11 +19,6 @@
     state: present
     filename: vscode
 
-- name: Add apt-transport-https from apt
-  apt:
-    name: apt-transport-https
-    state: present
-
 - name: Add vscode and update cache
   apt:
     name: code
@@ -33,12 +28,8 @@
 - name: Remove gnome-keyring
 # makes chromium way too annoying to use
   apt:
-    name: "{{ packages }}"
+    name: gnome-keyring
     state: absent
     autoremove: yes
-  vars:
-   packages:
-   - gnome-keyring
-
 
 
