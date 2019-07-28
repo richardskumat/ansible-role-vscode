@@ -1,2 +1,14 @@
 ---
 # defaults file for vscode
+# valid values: present, absent
+# present installs the role
+# absent removes everything that the role touches
+vscode_installed_state: present
+# valid values are
+# code for stable release
+# code-insiders for beta
+vscode_package_name: code
+
+# determines the files name that gets added to
+# /etc/apt/sources.list.d
+vscode_apt_file_name: vscode

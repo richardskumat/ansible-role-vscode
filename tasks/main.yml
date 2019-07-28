@@ -6,7 +6,12 @@
 #  when:
 #    - ansible_os_family == 'RedHat'
 
-- name: Include debian OS family tasks
+- name: Install vscode from debian OS family systems
   include_tasks: "{{ ansible_os_family }}.yml"
   when:
-    - ansible_os_family == 'Debian'
+    - ansible_os_family == 'Debian' and vscode_installed_state == 'present'
+
+- name: Uninstall vscode from debian OS family systems
+  include_tasks: "{{ ansible_os_family }}-uninstall.yml"
+  when:
+    - ansible_os_family == 'Debian' and vscode_installed_state == 'absent'

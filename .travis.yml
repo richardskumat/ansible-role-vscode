@@ -1,0 +1,31 @@
+---
+# based on https://github.com/geerlingguy/ansible-role-mysql/blob/master/.travis.yml for now
+language: python
+services: docker
+
+env:
+  global:
+    - ROLE_NAME: ansible-role-vscode
+  matrix:
+    - MOLECULE_DISTRO: debian:9
+    - MOLECULE_DISTRO: debian:10
+
+install:
+  # Install test dependencies.
+  - pip install ansible molecule docker
+
+before_script:
+  # Use actual Ansible Galaxy role name for the project directory.
+  - cd ../
+  - mv $ROLE_NAME richardskumat.$ROLE_NAME
+  - cd richardskumat.$ROLE_NAME
+  - docker -v
+  - id
+
+script:
+  # Run tests.
+  - molecule converge || true
+  - molecule test || true
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

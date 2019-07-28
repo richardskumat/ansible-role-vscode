@@ -8,7 +8,7 @@ lint:
 platforms:
 
   - name: instance
-    image: debian:9
+    image: "${MOLECULE_DISTRO:-debian:9}"
     pull: yes
     groups:
      - vscode
