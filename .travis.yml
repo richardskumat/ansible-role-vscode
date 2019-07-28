@@ -6,6 +6,8 @@ services: docker
 env:
   global:
     - ROLE_NAME: ansible-role-vscode
+    - GALAXY_USERNAME: richardskumat
+    - GALAXY_ROLENAME: ansible_role_vscode
   matrix:
     - MOLECULE_DISTRO: debian:9
     - MOLECULE_DISTRO: debian:10
@@ -17,10 +19,11 @@ install:
 before_script:
   # Use actual Ansible Galaxy role name for the project directory.
   - cd ../
-  - mv $ROLE_NAME richardskumat.$ROLE_NAME
-  - cd richardskumat.$ROLE_NAME
+  - mv $ROLE_NAME $GALAXY_USERNAME.$GALAXY_ROLENAME
+  - cd $GALAXY_USERNAME.$GALAXY_ROLENAME
   - docker -v
   - id
+
 
 script:
   # Run tests.
