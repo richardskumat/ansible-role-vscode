@@ -4,12 +4,11 @@ galaxy_info:
   description: Installs Microsoft VSCode
   company: none
 
-
   license: GPLv3
 
   min_ansible_version: 2.8
 
   platforms:
-   - name: Debian
+    - name: Debian
   galaxy_tags: []
 dependencies: []

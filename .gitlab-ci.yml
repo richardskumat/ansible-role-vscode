@@ -33,13 +33,11 @@ test_d9:
   variables:
     MOLECULE_DISTRO: "debian:9"
   script:
-    - molecule converge || true
-    - molecule test || true
+    - molecule test
 
 test_d10:
   stage: test
   variables:
     MOLECULE_DISTRO: "debian:10"
   script:
-    - molecule converge || true
-    - molecule test || true
+    - molecule test
