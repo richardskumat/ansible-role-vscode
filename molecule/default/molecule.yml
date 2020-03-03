@@ -3,30 +3,21 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
-  options:
-    config-file: molecule/default/yaml-lint.yml
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
 platforms:
-
   - name: instance
-    image: "${MOLECULE_DISTRO:-debian:9}"
-    pull: yes
-    groups:
-      - vscode
-
+    image: "${MOLECULE_DISTRO:-qwe1/docker-debian:10-molecule}"
+    privileged: true
+    pre_build_image: true
+    command: ""
+    pull: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
 provisioner:
   name: ansible
   log: true
-  inventory:
-    group_vars:
-      vscode:
-        user: qwe
-  lint:
-    name: ansible-lint
 scenario:
   name: default
-verifier:
-  name: testinfra
-  lint:
-    name: flake8

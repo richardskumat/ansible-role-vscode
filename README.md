@@ -1,7 +1,8 @@
 Vscode ansible role
 =========
 
-Installs Microsoft's VSCode.
+Installs Microsoft's VSCode based on
+https://code.visualstudio.com/docs/setup/linux.
 
 Requirements
 ------------
@@ -34,16 +35,6 @@ Dependencies
 
 X11 graphical environment where this role ends up being installed.
 
-Example Playbook
-----------------
-
-Including an example of how to use your role (for instance, with variables
-passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: vscode }
-
 License
 -------
 
@@ -54,6 +45,18 @@ Author Information
 
 Richard Skumat
 
-Link:
+Gitlab:
 
-https://github.com/richardskumat
+https://gitlab.com/richardskumat/ansible-role-vscode
+
+Gitlab-ci:
+
+https://gitlab.com/richardskumat/ansible-role-vscode/pipelines
+
+Github:
+
+https://github.com/richardskumat/ansible-role-vscode
+
+Travis:
+
+https://travis-ci.org/richardskumat/ansible-role-vscode

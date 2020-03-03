@@ -24,5 +24,4 @@
 - name: Remove vscode and update cache
   apt:
    name: "{{ vscode_package_name }}"
-   # code-insiders for beta?
    state: "{{ vscode_installed_state }}"

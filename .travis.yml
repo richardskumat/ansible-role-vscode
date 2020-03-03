@@ -9,21 +9,18 @@ env:
     - GALAXY_USERNAME: richardskumat
     - GALAXY_ROLENAME: ansible_role_vscode
   matrix:
-    - MOLECULE_DISTRO: debian:9
-    - MOLECULE_DISTRO: debian:10
+    - MOLECULE_DISTRO: qwe1/docker-debian:9-molecule
+    - MOLECULE_DISTRO: qwe1/docker-debian:10-molecule
 
 install:
   # Install test dependencies.
-  - pip install ansible molecule docker
+  - pip3 install ansible molecule docker ansible-lint
 
 before_script:
   # Use actual Ansible Galaxy role name for the project directory.
   - cd ../
   - mv $ROLE_NAME $GALAXY_USERNAME.$GALAXY_ROLENAME
   - cd $GALAXY_USERNAME.$GALAXY_ROLENAME
-  - docker -v
-  - id
-
 
 script:
   - molecule test
