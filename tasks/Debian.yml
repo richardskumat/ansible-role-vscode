@@ -18,6 +18,7 @@
    repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
    state: "{{ vscode_installed_state }}"
    filename: "{{ vscode_apt_file_name }}"
+   mode: 0644
 
 - name: Add vscode and update cache
   apt:
