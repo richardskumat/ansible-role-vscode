@@ -36,3 +36,10 @@ test_d10:
     MOLECULE_DISTRO: "qwe1/docker-debian:10-molecule"
   script:
     - molecule test
+
+test_d11:
+  stage: test
+  variables:
+    MOLECULE_DISTRO: "qwe1/docker-debian:11-molecule"
+  script:
+    - molecule test

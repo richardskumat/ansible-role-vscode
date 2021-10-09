@@ -9,7 +9,7 @@ lint: |
   ansible-lint
 platforms:
   - name: instance
-    image: "${MOLECULE_DISTRO:-qwe1/docker-debian:10-molecule}"
+    image: "${MOLECULE_DISTRO:-qwe1/docker-debian:11-molecule}"
     privileged: true
     pre_build_image: true
     command: ""
