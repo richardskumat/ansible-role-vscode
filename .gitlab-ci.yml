@@ -23,20 +23,6 @@ before_script:
   - cp -aR $ROLE_NAME $GALAXY_USERNAME.$GALAXY_ROLENAME
   - cd $GALAXY_USERNAME.$GALAXY_ROLENAME
 
-test_d9:
-  stage: test
-  variables:
-    MOLECULE_DISTRO: "qwe1/docker-debian:9-molecule"
-  script:
-    - molecule test
-
-test_d10:
-  stage: test
-  variables:
-    MOLECULE_DISTRO: "qwe1/docker-debian:10-molecule"
-  script:
-    - molecule test
-
 test_d11:
   stage: test
   variables:
