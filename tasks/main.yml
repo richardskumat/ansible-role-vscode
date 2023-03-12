@@ -2,16 +2,16 @@
 # tasks file for vscode
 
 # - name: Include overrides specific to EL 7.
-#  include_vars: "{{ ansible_os_family }}.yml"
+#  ansible.builtin.include_vars: "{{ ansible_os_family }}.yml"
 #  when:
 #    - ansible_os_family == 'RedHat'
 
 - name: Install vscode for debian OS family systems
-  include_tasks: "{{ ansible_os_family }}.yml"
+  ansible.builtin.include_tasks: "{{ ansible_os_family }}.yml"
   when:
     - ansible_os_family == 'Debian' and vscode_installed_state == 'present'
 
 - name: Uninstall vscode from debian OS family systems
-  include_tasks: "{{ ansible_os_family }}-uninstall.yml"
+  ansible.builtin.include_tasks: "{{ ansible_os_family }}-uninstall.yml"
   when:
     - ansible_os_family == 'Debian' and vscode_installed_state == 'absent'
