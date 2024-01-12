@@ -56,7 +56,3 @@ https://gitlab.com/richardskumat/ansible-role-vscode/pipelines
 Github:
 
 https://github.com/richardskumat/ansible-role-vscode
-
-Travis:
-
-https://travis-ci.org/richardskumat/ansible-role-vscode
